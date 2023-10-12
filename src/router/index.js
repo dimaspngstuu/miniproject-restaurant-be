@@ -1,6 +1,7 @@
 const express = require("express")
 const menuController= require("../controllers/menuController")
 const customerController = require("../controllers/customerController")
+const categoriesController = require("../controllers/categoriesControllers")
 const router = express.Router()
 
 
@@ -20,5 +21,13 @@ router.get("/customers/:id",customerController.getById);
 router.put("/customers/:id",customerController.update);
 router.delete("/customers/:id",customerController.delete);
 router.delete("/customers/",customerController.clearAllData);
+
+
+//routes for table categories
+router.get("/categories", categoriesController.getAll)
+router.post("/categories", categoriesController.create)
+router.get("/categories/:id", categoriesController.getById)
+router.put("/categories/:id", categoriesController.updateCategories)
+router.delete("/categories/:id", categoriesController.deleteById)
 
 module.exports = router
