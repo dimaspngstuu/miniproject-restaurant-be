@@ -2,7 +2,7 @@ const db = require("../../db/config")
 
 const menuModel = {}
 
-//to get all data
+
 menuModel.getAll = () => {
     return new Promise((resolve,reject) => {
         db.all("SELECT * FROM menu",(err,rows) => {
@@ -66,3 +66,4 @@ menuModel.delete = (id) => {
 }
 
 module.exports = menuModel
+

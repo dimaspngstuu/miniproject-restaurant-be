@@ -4,7 +4,7 @@ const menuController = {}
 
 menuController.getAll = async (req,res) => {
     const menus = await menuModel.getAll()
-    res.json({
+    res.json({ 
         message : menus
     })
 }
