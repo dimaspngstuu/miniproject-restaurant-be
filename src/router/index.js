@@ -2,6 +2,7 @@ const express = require("express")
 const menuController= require("../controllers/menuController")
 const customerController = require("../controllers/customerController")
 const categoriesController = require("../controllers/categoriesControllers")
+const orderControllers = require("../controllers/orderControllers")
 require("../controllers/orderControllers")
 const router = express.Router()
 
@@ -30,5 +31,9 @@ router.post("/categories", categoriesController.create)
 router.get("/categories/:id", categoriesController.getById)
 router.put("/categories/:id", categoriesController.updateCategories)
 router.delete("/categories/:id", categoriesController.deleteById)
+
+
+//routes for table orders
+router.post("/orders", orderControllers.create)
 
 module.exports = router

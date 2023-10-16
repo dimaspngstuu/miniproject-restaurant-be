@@ -4,15 +4,13 @@ const db = require("../../db/config")
 const orderModels = {};
 
 
-orderModels.create = (customer_id, menu_id, qty) => {
+orderModels.create = (customer_id,items,orderDate,totalOrder) => {
     return new Promise((resolve, reject) => {
-        const query = "INSERT INTO orders(customer_id, menu_id, qty) VALUES(?,?,?)";
-        db.run(query,[customer_id, menu_id, qty], (err, rows) => {
-            if(err){
-                reject(err)
-            } else {
-                resolve(rows)
-            }
+        db.serialize(() => {
+            db.run("BEGIN TRANSACTION");
+            const query ="INSERT INTO orders (customer_id, menu_id, qty, order_date) VALUES (?, ?, ?, ?)";
+            db.run(query,[customer_id, items.menu_id, items.qty, orderDate] )
+            
         })
     })
 }

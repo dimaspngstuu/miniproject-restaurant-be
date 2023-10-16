@@ -27,8 +27,8 @@ db.serialize(() => {
         menu_id INTEGER,
         qty INTEGER,
         order_date DATETIME default CURRENT_TIMESTAMP,
-        created DATETIME default CURRENT_TIMESTAMP,
-        updated DATETIME default CURRENT_TIMESTAMP,
+        created_at DATETIME default CURRENT_TIMESTAMP,
+        updated_at DATETIME default CURRENT_TIMESTAMP,
         FOREIGN KEY (customer_id) REFERENCES customer(id),
         FOREIGN KEY (menu_id) REFERENCES menu(id)
     );`)
@@ -37,3 +37,4 @@ db.on('open',() => console.log("Success generate table !"))
 db.on('error',() => console.log("database error!"))
 
 module.exports = db
+
