@@ -3,9 +3,6 @@ const db = require("../../db/config")
 
 const customerModel = {};
 
-
-//Get all data in Customer Tabel
-//query = SELECT * FROM customer;
 customerModel.getAll = () => {
     return new Promise((resolve, reject) => {
         const query = "SELECT * FROM customer";
@@ -20,9 +17,6 @@ customerModel.getAll = () => {
     })
 }
 
-
-//Get Customer by1
-//query = SELECT * FROM customer WHERE id = ?
 customerModel.getById = (id) => {
     return new Promise((resolve, reject) => {
         const query = "SELECT * FROM customer WHERE id = ?";
@@ -37,8 +31,19 @@ customerModel.getById = (id) => {
 }
 
 
-//Create new customer
-//query = INSERT INTO customer(name, addres, email) VALUES (?,?,?)
+customerModel.getByName = (name) => {
+    return new Promise((resolve, reject) => {
+        const query = `SELECT * FROM customer WHERE name LIKE '%${name}%'`;
+        db.query(query, (err, results) => {
+            if (err) {
+                reject(err);
+            } else {
+                resolve(results);
+            }
+        });
+    });
+}
+
 customerModel.create = (name, address, email) => {
     return new Promise((resolve, reject) => {
         const query = "INSERT INTO customer(name, address, email) VALUES (?,?,?)";
@@ -52,8 +57,6 @@ customerModel.create = (name, address, email) => {
     })
 }
 
-//update data by Id
-//query = UPDATE customer SET name = ? addres = ? email = ? WHERE id = ?
 customerModel.updateById = (name, address, email, id) => {
     return new Promise((resolve, reject) => {
         const query = "UPDATE customer SET name=?,address=? ,email=?  where id =? ";
@@ -67,8 +70,6 @@ customerModel.updateById = (name, address, email, id) => {
     });
 }
 
-//delete data by Id
-//query = DELETE FROM customer WHERE id = ?
 customerModel.deleteById = (id) => {
     return new Promise((resolve, reject) => {
         const query = "DELETE FROM customer WHERE id = ?";

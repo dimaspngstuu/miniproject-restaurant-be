@@ -16,9 +16,9 @@ menuModel.getAll = () => {
     
 }
 
-menuModel.create = (data) => {
+menuModel.create = (item, price) => {
     return new Promise((resolve, reject) => {
-         db.run(`INSERT INTO menu (item,price) VALUES ('${data.item}', '${data.price}')`,(err,rows) => {
+         db.run(`INSERT INTO menu (item,price) VALUES ('${item}', '${price}')`,(err,rows) => {
             if(err) {
                 reject (err)
             }else {

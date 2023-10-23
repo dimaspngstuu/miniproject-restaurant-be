@@ -34,6 +34,7 @@ router.delete("/categories/:id", categoriesController.deleteById)
 
 
 //routes for table orders
-router.post("/orders", orderControllers.create)
+router.get("/orders",orderControllers.getAll)
+router.post("/orders/create",orderControllers.create)
 
 module.exports = router

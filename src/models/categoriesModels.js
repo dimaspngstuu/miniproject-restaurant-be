@@ -41,7 +41,6 @@ categoriesModel.getCategoriesById = (id) => {
     })
 }
 
-
 categoriesModel.update = (id, name) => {
     return new Promise((resolve, reject) => {
         const query = "UPDATE categories SET name = ? WHERE id = ?";
@@ -54,7 +53,6 @@ categoriesModel.update = (id, name) => {
         })
     })
 }
-
 
 categoriesModel.deleteCategoriesById = (id) => {
     new Promise((resolve,reject) => {
